@@ -1,0 +1,22 @@
+---
+import SkillCard from './SkillCard.astro';
+import { getSkills } from '../utils/dataUtils';
+
+const skills = await getSkills();
+---
+
+<section id="tecnologias" class="section-padding bg-[#1B262C]">
+  <div class="container-custom">
+    <h2 class="section-title text-center">Tecnologías</h2>
+    <p class="text-center text-[#BBE1FA]/80 max-w-3xl mx-auto mb-12">
+      Herramientas y tecnologías con las que trabajo habitualmente para desarrollar soluciones web.
+    </p>
+    
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      {skills.map(skill => (
+        <SkillCard skill={skill} />
+      ))}
+    </div>
+  </div>
+</section>
+

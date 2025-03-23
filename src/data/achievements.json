@@ -1,0 +1,27 @@
+[
+  {
+    "id": "cert1",
+    "title": "Certificado de Mejor Proyecto de Carrera 2024",
+    "issuer": "Universidad Mesoamericana",
+    "date": "Noviembre 2024",
+    "description": "Certificado de Mejor Proyecto de Carrera 2024, evaluado por invitados internacionales.",
+    "image": "/certificadoProyecto.png?height=128&width=200"
+  },
+  {
+    "id": "cert2",
+    "title": "Certificado de React.js",
+    "issuer": "Platzi",
+    "date": "Febrero 2025",
+    "description": "Certificación que valida conocimientos en desarrollo y despliegue de aplicaciones en React.js.",
+    "image": "/diploma-react.jpg?height=128&width=200"
+  },
+  {
+    "id": "cert3",
+    "title": "Certificado IEEE autoría y acceso abierto",
+    "issuer": "IEEE",
+    "date": "Octubre 2021",
+    "description": "Participación en seminario sobre consejos para el proceso de publicación en IEEE",
+    "image": "/IEEE.jpg?height=128&width=200"
+  }
+]
+

@@ -1,0 +1,28 @@
+---
+import type { Achievement } from '../types/achievement';
+
+interface Props {
+  achievement: Achievement;
+}
+
+const { achievement } = Astro.props;
+---
+
+<article class="bg-[#1B262C] rounded-lg overflow-hidden shadow-lg p-6">
+  <div class="mb-4 flex justify-center">
+    <img 
+      src={achievement.image || "/placeholder.svg"} 
+      alt={achievement.title} 
+      class="h-32 object-contain"
+      width="200"
+      height="128"
+    />
+  </div>
+  
+  <h3 class="text-xl font-bold mb-2 text-[#BBE1FA] text-center">{achievement.title}</h3>
+  <p class="text-[#BBE1FA]/80 mb-2 text-center">{achievement.issuer}</p>
+  <p class="text-[#3282B8] text-sm mb-4 text-center">{achievement.date}</p>
+  
+  <p class="text-[#BBE1FA]/80 text-center">{achievement.description}</p>
+</article>
+

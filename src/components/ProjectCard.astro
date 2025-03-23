@@ -1,0 +1,59 @@
+---
+import type { Project } from '../types/project';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="bg-[#0F4C75] rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2">
+  <div class="aspect-video overflow-hidden">
+    <img 
+      src={project.image || "/placeholder.svg"} 
+      alt={project.title} 
+      class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+      width="600"
+      height="338"
+    />
+  </div>
+  
+  <div class="p-6">
+    <h3 class="text-xl font-bold mb-2 text-[#BBE1FA]">{project.title}</h3>
+    <p class="text-[#BBE1FA]/80 mb-4">{project.description}</p>
+    
+    <div class="flex flex-wrap gap-2 mb-6">
+      {project.technologies.map(tech => (
+        <span class="bg-[#3282B8] text-[#BBE1FA] text-xs px-3 py-1 rounded-full">
+          {tech}
+        </span>
+      ))}
+    </div>
+    
+    <div class="flex gap-4">
+      {project.demoUrl && (
+        <a 
+          href={project.demoUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn-primary text-sm"
+        >
+          Ver Demo
+        </a>
+      )}
+      
+      {project.repoUrl && (
+        <a 
+          href={project.repoUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="border border-[#3282B8] text-[#BBE1FA] hover:bg-[#3282B8]/20 text-sm font-medium py-2 px-4 rounded-md transition-colors duration-300"
+        >
+          Ver Código
+        </a>
+      )}
+    </div>
+  </div>
+</article>
+

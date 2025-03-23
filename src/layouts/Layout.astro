@@ -1,0 +1,75 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "Portafolio profesional de Josué Robles, desarrollador web" 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body class="bg-[#1B262C] text-[#BBE1FA] min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  :root {
+    --color-dark: #1B262C;
+    --color-primary: #0F4C75;
+    --color-secondary: #3282B8;
+    --color-light: #BBE1FA;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  @layer components {
+    .container-custom {
+      @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+    }
+    
+    .section-padding {
+      @apply py-16 md:py-24;
+    }
+    
+    .section-title {
+      @apply text-3xl md:text-4xl font-bold mb-8 text-[#BBE1FA];
+    }
+    
+    .btn-primary {
+      @apply bg-[#3282B8] hover:bg-[#0F4C75] text-[#BBE1FA] font-medium py-2 px-6 rounded-md transition-colors duration-300;
+    }
+  }
+</style>
+

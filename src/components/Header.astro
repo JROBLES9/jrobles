@@ -1,0 +1,64 @@
+---
+import NavLink from './NavLink.astro';
+---
+
+<header class="sticky top-0 z-50 bg-[#1B262C]/90 backdrop-blur-sm border-b border-[#3282B8]/20">
+  <div class="container-custom py-4">
+    <nav class="flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold text-[#BBE1FA]">JROBLES</a>
+      
+      <!-- Mobile menu button -->
+      <button id="menuButton" class="md:hidden text-[#BBE1FA]" aria-label="Menú">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      
+      <!-- Desktop navigation -->
+      <div class="hidden md:flex space-x-8">
+        <NavLink href="#inicio">Inicio</NavLink>
+        <NavLink href="#proyectos">Proyectos</NavLink>
+        <NavLink href="#logros">Logros</NavLink>
+        <NavLink href="#tecnologias">Tecnologías</NavLink>
+        <NavLink href="#contacto">Contacto</NavLink>
+      </div>
+      
+      <!-- Mobile navigation -->
+      <div id="mobileMenu" class="fixed inset-0 bg-[#1B262C] flex-col items-center justify-center space-y-8 hidden">
+        <button id="closeButton" class="absolute top-4 right-4 text-[#BBE1FA]" aria-label="Cerrar menú">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <NavLink href="#inicio" mobile={true}>Inicio</NavLink>
+        <NavLink href="#proyectos" mobile={true}>Proyectos</NavLink>
+        <NavLink href="#logros" mobile={true}>Logros</NavLink>
+        <NavLink href="#tecnologias" mobile={true}>Tecnologías</NavLink>
+        <NavLink href="#contacto" mobile={true}>Contacto</NavLink>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const menuButton = document.getElementById('menuButton');
+    const closeButton = document.getElementById('closeButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('#mobileMenu a');
+    
+    const toggleMenu = () => {
+      mobileMenu?.classList.toggle('hidden');
+      mobileMenu?.classList.toggle('flex');
+      document.body.classList.toggle('overflow-hidden');
+    };
+    
+    menuButton?.addEventListener('click', toggleMenu);
+    closeButton?.addEventListener('click', toggleMenu);
+    
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', toggleMenu);
+    });
+  });
+</script>
+

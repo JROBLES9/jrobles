@@ -1,0 +1,22 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import { getProjects } from '../utils/dataUtils';
+
+const projects = await getProjects();
+---
+
+<section id="proyectos" class="section-padding bg-[#1B262C]">
+  <div class="container-custom">
+    <h2 class="section-title text-center">Mis Proyectos</h2>
+    <p class="text-center text-[#BBE1FA]/80 max-w-3xl mx-auto mb-12">
+      Una selección de mis trabajos más recientes y destacados. Cada proyecto representa un desafío único que me ha permitido crecer como desarrollador.
+    </p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map(project => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </div>
+</section>
+

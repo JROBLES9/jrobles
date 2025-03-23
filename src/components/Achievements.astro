@@ -1,0 +1,22 @@
+---
+import AchievementCard from './AchievementCard.astro';
+import { getAchievements } from '../utils/dataUtils';
+
+const achievements = await getAchievements();
+---
+
+<section id="logros" class="section-padding bg-[#0F4C75]">
+  <div class="container-custom">
+    <h2 class="section-title text-center">Logros y Certificaciones</h2>
+    <p class="text-center text-[#BBE1FA]/80 max-w-3xl mx-auto mb-12">
+      Reconocimientos y certificaciones que he obtenido a lo largo de mi carrera profesional.
+    </p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {achievements.map(achievement => (
+        <AchievementCard achievement={achievement} />
+      ))}
+    </div>
+  </div>
+</section>
+

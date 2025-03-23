@@ -1,0 +1,25 @@
+---
+interface Props {
+  href: string;
+  mobile?: boolean;
+}
+
+const { href, mobile = false } = Astro.props;
+---
+
+{mobile ? (
+  <a 
+    href={href} 
+    class="text-xl text-[#BBE1FA] hover:text-[#3282B8] transition-colors duration-300"
+  >
+    <slot />
+  </a>
+) : (
+  <a 
+    href={href} 
+    class="text-[#BBE1FA] hover:text-[#3282B8] transition-colors duration-300"
+  >
+    <slot />
+  </a>
+)}
+

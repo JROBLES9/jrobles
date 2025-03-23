@@ -1,0 +1,30 @@
+[
+  {
+    "id": "project1",
+    "title": "Sistema de supervicion de POA",
+    "description": "Ganador del premio a mejor proyecto de carrera 2024, evaluado por invitados internacionales.",
+    "image": "/POA.png?height=338&width=600",
+    "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "React", "API Rest", "Vercel"],
+    "demoUrl": "https://ejemplo.com/demo",
+    "repoUrl": "https://github.com/ejemplo/repo"
+  },
+  {
+    "id": "project2",
+    "title": "Totito con ASEMBLER multijugador",
+    "description": "Conexion local entre dos maquinas distintas para el modo multijugador, reconocimiento de teclas, y animaciones.",
+    "image": "/totito.png?height=338&width=600",
+    "technologies": ["Ensamblador", "VirtualBox"],
+    "demoUrl": "https://www.youtube.com/watch?v=aHiSvfKpPlI",
+    "repoUrl": "https://github.com/ejemplo/repo"
+  },
+  {
+    "id": "project3",
+    "title": "Invitación de cumpleaños con Astro",
+    "description": "Animaciones, gradientes y efectos de sonido. Flor base tomada de https://www.youtube.com/watch?v=-S-0Wxo9_nQ , le he realizado modificaciones para adecuarse a las dimensiones y mejoras",
+    "image": "/Invitacion.png?height=338&width=600",
+    "technologies": ["Astro", "Tailwind CSS", "TypeScript"],
+    "demoUrl": "https://ejemplo.com/demo",
+    "repoUrl": "https://github.com/ejemplo/repo"
+  }
+]
+

@@ -2,62 +2,62 @@
   {
     "id": "skill1",
     "name": "React",
-    "icon": "/placeholder.svg?height=64&width=64"
+    "icon": "/icons/react_light.svg?height=64&width=64"
   },
   {
     "id": "skill2",
     "name": "Next.js",
-    "icon": "/placeholder.svg?height=64&width=64"
+    "icon": "/icons/nextjs_icon_dark.svg?height=64&width=64"
   },
   {
     "id": "skill3",
     "name": "Astro",
-    "icon": "/placeholder.svg?height=64&width=64"
+    "icon": "/icons/astro.svg?height=64&width=64"
   },
   {
     "id": "skill4",
     "name": "TypeScript",
-    "icon": "/placeholder.svg?height=64&width=64"
+    "icon": "/icons/typescript.svg?height=64&width=64"
   },
   {
     "id": "skill5",
     "name": "Node.js",
-    "icon": "/placeholder.svg?height=64&width=64"
+    "icon": "/icons/nodejs.svg?height=64&width=64"
   },
   {
     "id": "skill6",
     "name": "MySQL",
-    "icon": "/placeholder.svg?height=64&width=64"
+    "icon": "/icons/mysql.svg?height=64&width=64"
   },
   {
     "id": "skill7",
     "name": "Python",
-    "icon": "/placeholder.svg?height=64&width=64"
+    "icon": "/icons/python.svg?height=64&width=64"
   },
   {
     "id": "skill8",
     "name": "Tailwind CSS",
-    "icon": "/placeholder.svg?height=64&width=64"
+    "icon": "/icons/tailwindcss.svg?height=64&width=64"
   },
   {
     "id": "skill9",
-    "name": "MongoDB",
-    "icon": "/placeholder.svg?height=64&width=64"
+    "name": "GitHub",
+    "icon": "/icons/github-dark.svg?height=64&width=64"
   },
   {
     "id": "skill10",
     "name": "Git",
-    "icon": "/placeholder.svg?height=64&width=64"
+    "icon": "/icons/git.svg?height=64&width=64"
   },
   {
     "id": "skill11",
     "name": "Docker",
-    "icon": "/placeholder.svg?height=64&width=64"
+    "icon": "/icons/docker.svg?height=64&width=64"
   },
   {
     "id": "skill12",
     "name": "AWS",
-    "icon": "/placeholder.svg?height=64&width=64"
+    "icon": "/icons/aws_dark.svg?height=64&width=64"
   }
 ]
 

@@ -1,21 +1,149 @@
 ---
-import ProjectCard from './ProjectCard.astro';
-import { getProjects } from '../utils/dataUtils';
-
-const projects = await getProjects();
 ---
 
 <section id="proyectos" class="section-padding bg-[#1B262C]">
-  <div class="container-custom">
-    <h2 class="section-title text-center">Mis Proyectos</h2>
-    <p class="text-center text-[#BBE1FA]/80 max-w-3xl mx-auto mb-12">
-      Una selección de mis trabajos más recientes y destacados. Cada proyecto representa un desafío único que me ha permitido crecer como desarrollador.
-    </p>
+  <div class="container-custom">    
+    <!-- Proyecto destacado -->
+    <div class="mb-16 overflow-hidden bg-gradient-to-br from-[#0F4C75] to-[#1B262C] rounded-xl shadow-2xl transform transition-transform duration-500 hover:-translate-y-2">
+      <div class="grid md:grid-cols-2 gap-0">
+        <div class="overflow-hidden h-full">
+          <img 
+            src="POA.png"
+            alt="Sistema de supervisión de POA" 
+            class="w-full h-full object-cover object-left"
+            width="600"
+            height="400"
+          />
+        </div>
+        <div class="p-8 flex flex-col justify-between">
+          <div>
+            <h3 class="text-2xl md:text-3xl font-bold mb-4 text-[#BBE1FA]">Sistema de supervisión de POA</h3>
+            <p class="text-[#BBE1FA]/90 mb-6 text-lg">
+              Ganador del premio a mejor proyecto de carrera 2024, evaluado por invitados internacionales. Una plataforma completa para la gestión y seguimiento de Planes Operativos Anuales con reportes en tiempo real y dashboard interactivo.
+            </p>
+            
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="bg-[#3282B8] text-[#BBE1FA] px-3 py-1 rounded-full text-sm">Next.js</span>
+              <span class="bg-[#3282B8] text-[#BBE1FA] px-3 py-1 rounded-full text-sm">TypeScript</span>
+              <span class="bg-[#3282B8] text-[#BBE1FA] px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
+              <span class="bg-[#3282B8] text-[#BBE1FA] px-3 py-1 rounded-full text-sm">React</span>
+              <span class="bg-[#3282B8] text-[#BBE1FA] px-3 py-1 rounded-full text-sm">API Rest</span>
+              <span class="bg-[#3282B8] text-[#BBE1FA] px-3 py-1 rounded-full text-sm">Vercel</span>
+            </div>
+          </div>
+          
+          <div class="flex gap-4">
+            <a 
+              href="#" 
+              class="btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver Demo
+            </a>
+            <a 
+              href="#" 
+              class="border border-[#3282B8] text-[#BBE1FA] hover:bg-[#3282B8]/20 font-medium py-2 px-6 rounded-md transition-colors duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver Código
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {projects.map(project => (
-        <ProjectCard project={project} />
-      ))}
+    <!-- Proyectos secundarios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Proyecto 2 -->
+      <div class="bg-[#0F4C75] rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 flex flex-col h-full">
+        <div class="aspect-video overflow-hidden">
+          <img 
+            src="totito.png" 
+            alt="Totito con ASEMBLER multijugador" 
+            class="w-full h-full object-cover object-center"
+            width="600"
+            height="338"
+          />
+        </div>
+        
+        <div class="p-6 flex flex-col flex-grow">
+          <h3 class="text-xl font-bold mb-2 text-[#BBE1FA]">Totito con ASEMBLER multijugador</h3>
+          <p class="text-[#BBE1FA]/80 mb-4 flex-grow">
+            Conexión local entre dos máquinas distintas para el modo multijugador, reconocimiento de teclas, y animaciones.
+          </p>
+          
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="bg-[#3282B8]/70 text-[#BBE1FA] text-xs px-3 py-1 rounded-full">Ensamblador</span>
+            <span class="bg-[#3282B8]/70 text-[#BBE1FA] text-xs px-3 py-1 rounded-full">VirtualBox</span>
+          </div>
+          
+          <div class="flex gap-4 mt-auto">
+            <a 
+              href="#" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="bg-[#3282B8]/80 hover:bg-[#3282B8] text-[#BBE1FA] text-sm font-medium py-2 px-4 rounded-md transition-colors duration-300"
+            >
+              Ver Demo
+            </a>
+            <a 
+              href="#" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="border border-[#3282B8]/60 text-[#BBE1FA] hover:bg-[#3282B8]/20 text-sm font-medium py-2 px-4 rounded-md transition-colors duration-300"
+            >
+              Ver Código
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Proyecto 3 -->
+      <div class="bg-[#0F4C75] rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 flex flex-col h-full">
+        <div class="aspect-video overflow-hidden">
+          <img 
+            src="Invitacion.png" 
+            alt="Invitación de cumpleaños con Astro" 
+            class="w-full h-full object-cover object-right"
+            width="600"
+            height="338"
+          />
+        </div>
+        
+        <div class="p-6 flex flex-col flex-grow">
+          <h3 class="text-xl font-bold mb-2 text-[#BBE1FA]">Invitación de cumpleaños con Astro</h3>
+          <p class="text-[#BBE1FA]/80 mb-4 flex-grow">
+            Animaciones, gradientes y efectos de sonido. Flor base tomada de YouTube, con modificaciones para adecuarse a las dimensiones y mejoras.
+          </p>
+          
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="bg-[#3282B8]/70 text-[#BBE1FA] text-xs px-3 py-1 rounded-full">Astro</span>
+            <span class="bg-[#3282B8]/70 text-[#BBE1FA] text-xs px-3 py-1 rounded-full">Tailwind CSS</span>
+            <span class="bg-[#3282B8]/70 text-[#BBE1FA] text-xs px-3 py-1 rounded-full">TypeScript</span>
+          </div>
+          
+          <div class="flex gap-4 mt-auto">
+            <a 
+              href="#" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="bg-[#3282B8]/80 hover:bg-[#3282B8] text-[#BBE1FA] text-sm font-medium py-2 px-4 rounded-md transition-colors duration-300"
+            >
+              Ver Demo
+            </a>
+            <a 
+              href="#" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="border border-[#3282B8]/60 text-[#BBE1FA] hover:bg-[#3282B8]/20 text-sm font-medium py-2 px-4 rounded-md transition-colors duration-300"
+            >
+              Ver Código
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

@@ -1,0 +1,34 @@
+---
+
+
+interface Props {
+  platform: 'github';
+  username: string;
+  label: string;
+}
+
+const { platform, username, label } = Astro.props;
+
+// Configurar URLs según la plataforma
+const getHref = (platform: string, username: string): string => {
+  switch (platform) {
+    case 'github':
+      return `https://github.com/${username}`;
+    default:
+      return '#';
+  }
+};
+
+const href = getHref(platform, username);
+---
+
+<a 
+  href={href} 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  class="bg-[#1B262C] hover:bg-[#3282B8]/20 text-[#BBE1FA] p-3 rounded-full transition-all duration-300 hover:scale-110 group"
+  aria-label={`Visitar perfil de ${label}`}
+>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 transition-transform duration-300 group-hover:rotate-[360deg]"></svg>
+</a>
+

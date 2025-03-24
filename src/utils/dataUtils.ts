@@ -18,3 +18,9 @@ export async function getSkills(): Promise<Skill[]> {
   return skillsData
 }
 
+// Función para obtener habilidades por categoría
+export async function getSkillsByCategory(category: string): Promise<Skill[]> {
+  const skills = await getSkills()
+  return skills.filter((skill) => skill.category === category)
+}
+

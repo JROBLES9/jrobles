@@ -8,14 +8,22 @@ interface Props {
 const { skill } = Astro.props;
 ---
 
-<div class="bg-[#0F4C75] rounded-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:-translate-y-2">
-  <img 
-    src={skill.icon || "/placeholder.svg"} 
-    alt={skill.name} 
-    class="h-16 w-16 object-contain mb-4"
-    width="64"
-    height="64"
-  />
-  <h3 class="text-[#BBE1FA] font-medium text-center">{skill.name}</h3>
+<div class="bg-gradient-to-br from-[#0F4C75] to-[#1B262C] rounded-lg p-4 flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-[#3282B8]/20 group">
+  <div class="bg-[#1B262C]/40 p-3 rounded-full mb-3 group-hover:bg-[#3282B8]/20 transition-colors duration-300">
+    <img 
+      src={skill.icon || "/placeholder.svg"} 
+      alt={skill.name} 
+      class="h-12 w-12 object-contain"
+      width="48"
+      height="48"
+      loading="lazy"
+    />
+  </div>
+  <h3 class="text-[#BBE1FA] font-medium text-center text-sm">{skill.name}</h3>
+  {skill.level && (
+    <div class="mt-2 w-full bg-[#1B262C]/50 rounded-full h-1.5">
+      <div class="bg-[#3282B8] h-1.5 rounded-full" style={`width: ${skill.level}%`}></div>
+    </div>
+  )}
 </div>
 

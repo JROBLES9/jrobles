@@ -48,7 +48,7 @@ const achievements = await getAchievements();
     const minZoom = 0.5;
     
     // Función para abrir el modal con los detalles del certificado
-    function openCertificateModal(image, title, issuer, date, description, credential) {
+    function openCertificateModal(image: string, title: string, issuer: string, date: string, description: string, credential: string | null) {
       if (modalImage) {
         modalImage.setAttribute('src', image);
         modalImage.setAttribute('alt', title);
@@ -133,7 +133,7 @@ const achievements = await getAchievements();
       
       try {
         await navigator.share({
-          title: modalTitle ? modalTitle.textContent : 'Certificado',
+          title: modalTitle ? modalTitle.textContent || 'Certificado' : 'Certificado',
           text: `Certificado de ${modalIssuer ? modalIssuer.textContent : ''}: ${modalTitle ? modalTitle.textContent : ''}`,
           url: window.location.href,
         });
@@ -152,7 +152,9 @@ const achievements = await getAchievements();
         const description = card.getAttribute('data-description');
         const credential = card.getAttribute('data-credential');
         
-        openCertificateModal(image, title, issuer, date, description, credential);
+        if (image && title && issuer && date && description) {
+          openCertificateModal(image, title, issuer, date, description, credential);
+        }
       });
     });
     
@@ -182,7 +184,7 @@ const achievements = await getAchievements();
     // Soporte para gestos táctiles (pinch zoom)
     let initialDistance = 0;
     
-    function getDistance(touches) {
+    function getDistance(touches: TouchList) {
       return Math.hypot(
         touches[0].clientX - touches[1].clientX,
         touches[0].clientY - touches[1].clientY

@@ -1,21 +1,46 @@
 ---
 import SkillCard from './SkillCard.astro';
 import { getSkills } from '../utils/dataUtils';
+import { getSkillsByCategory } from '../utils/dataUtils';
+import type { Skill } from '../types/skill';
 
-const skills = await getSkills();
+const generalSkills = await getSkills();
+const skills = generalSkills.filter(f => f.category !== 'Mastered')
+const masteredSkills = await getSkillsByCategory('Mastered');
 ---
 
 <section id="tecnologias" class="section-padding bg-[#1B262C]">
   <div class="container-custom">
     <h2 class="section-title text-center">Tecnologías</h2>
-    <p class="text-center text-[#BBE1FA]/80 max-w-3xl mx-auto mb-12">
-      Herramientas y tecnologías con las que trabajo habitualmente para desarrollar soluciones web.
-    </p>
     
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-      {skills.map(skill => (
-        <SkillCard skill={skill} />
-      ))}
+    <!-- Tecnologías utilizadas en proyectos -->
+    <div class="mb-16">
+      <div class="flex items-center justify-center gap-3 mb-8">
+        <div class="h-0.5 w-16 bg-[#3282B8]"></div>
+        <h3 class="text-2xl font-bold text-[#BBE1FA]">Tecnologías que domino</h3>
+        <div class="h-0.5 w-16 bg-[#3282B8]"></div>
+      </div>
+      
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+        {masteredSkills.map((skill: Skill) => (
+          <SkillCard skill={skill} />
+        ))}
+      </div>
+    </div>
+    
+    <!-- Tecnologías que conozco -->
+    <div>
+      <div class="flex items-center justify-center gap-3 mb-8">
+        <div class="h-0.5 w-16 bg-[#3282B8]"></div>
+        <h3 class="text-2xl font-bold text-[#BBE1FA]">Tengo los conceptos de</h3>
+        <div class="h-0.5 w-16 bg-[#3282B8]"></div>
+      </div>
+      
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+        {skills.map((skill: Skill) => (
+          <SkillCard skill={skill} />
+        ))}
+      </div>
     </div>
   </div>
 </section>

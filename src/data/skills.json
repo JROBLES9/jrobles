@@ -2,62 +2,114 @@
   {
     "id": "skill1",
     "name": "React",
-    "icon": "/icons/react_light.svg?height=64&width=64"
+    "icon": "/icons/react_light.svg",
+    "level": 75,
+    "category": "Mastered"
   },
   {
     "id": "skill2",
     "name": "Next.js",
-    "icon": "/icons/nextjs_icon_dark.svg?height=64&width=64"
+    "icon": "/icons/nextjs_icon_dark.svg",
+    "level": 50,
+    "category": "Mastered"
   },
   {
     "id": "skill3",
     "name": "Astro",
-    "icon": "/icons/astro.svg?height=64&width=64"
+    "icon": "/icons/astro.svg",
+    "level": 40,
+    "category": "frontend"
   },
   {
     "id": "skill4",
     "name": "TypeScript",
-    "icon": "/icons/typescript.svg?height=64&width=64"
+    "icon": "/icons/typescript.svg",
+    "level": 50,
+    "category": "Mastered"
   },
   {
     "id": "skill5",
     "name": "Node.js",
-    "icon": "/icons/nodejs.svg?height=64&width=64"
+    "icon": "/icons/nodejs.svg",
+    "level": 40,
+    "category": "Mastered"
   },
   {
     "id": "skill6",
     "name": "MySQL",
-    "icon": "/icons/mysql.svg?height=64&width=64"
+    "icon": "/icons/mysql.svg",
+    "level": 80,
+    "category": "Mastered"
   },
   {
     "id": "skill7",
     "name": "Python",
-    "icon": "/icons/python.svg?height=64&width=64"
+    "icon": "/icons/python.svg",
+    "level": 70,
+    "category": "Mastered"
   },
   {
     "id": "skill8",
     "name": "Tailwind CSS",
-    "icon": "/icons/tailwindcss.svg?height=64&width=64"
+    "icon": "/icons/tailwindcss.svg",
+    "level": 40,
+    "category": "Mastered"
   },
   {
     "id": "skill9",
     "name": "GitHub",
-    "icon": "/icons/github-dark.svg?height=64&width=64"
+    "icon": "/icons/github-dark.svg",
+    "level": 60,
+    "category": "Mastered"
   },
   {
     "id": "skill10",
     "name": "Git",
-    "icon": "/icons/git.svg?height=64&width=64"
+    "icon": "/icons/git.svg",
+    "level": 80,
+    "category": "Mastered"
   },
   {
     "id": "skill11",
     "name": "Docker",
-    "icon": "/icons/docker.svg?height=64&width=64"
+    "icon": "/icons/docker.svg",
+    "level": 30,
+    "category": "devops"
   },
   {
     "id": "skill12",
     "name": "AWS",
-    "icon": "/icons/aws_dark.svg?height=64&width=64"
+    "icon": "/icons/aws_dark.svg",
+    "level": 30,
+    "category": "devops"
+  },
+  {
+    "id": "skill13",
+    "name": "MongoDB",
+    "icon": "/icons/mongodb.svg",
+    "level": 15,
+    "category": "database"
+  },
+  {
+    "id": "skill14",
+    "name": "Express",
+    "icon": "/icons/express.svg",
+    "level": 30,
+    "category": "backend"
+  },
+  {
+    "id": "skill15",
+    "name": "Vue.js",
+    "icon": "/icons/vue.svg",
+    "level": 25,
+    "category": "frontend"
+  },
+  {
+    "id": "skill18",
+    "name": "Figma",
+    "icon": "/icons/figma.svg",
+    "level": 35,
+    "category": "design"
   }
 ]
 

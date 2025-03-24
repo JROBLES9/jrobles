@@ -8,21 +8,66 @@ interface Props {
 const { achievement } = Astro.props;
 ---
 
-<article class="bg-[#1B262C] rounded-lg overflow-hidden shadow-lg p-6">
-  <div class="mb-4 flex justify-center">
-    <img 
-      src={achievement.image || "/placeholder.svg"} 
-      alt={achievement.title} 
-      class="h-32 object-contain"
-      width="200"
-      height="128"
-    />
+<article 
+  class="certificate-card bg-[#1B262C] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer h-full flex flex-col"
+  data-image={achievement.image}
+  data-title={achievement.title}
+  data-issuer={achievement.issuer}
+  data-date={achievement.date}
+  data-description={achievement.description}
+  data-credential={achievement.credential}
+  tabindex="0"
+  role="button"
+  aria-label={`Ver certificado: ${achievement.title}`}
+>
+  <div class="relative">
+    <div class="aspect-[4/3] overflow-hidden">
+      <img 
+        src={achievement.image || "/placeholder.svg"} 
+        alt={achievement.title} 
+        class="w-full h-full object-cover"
+        width="400"
+        height="300"
+        loading="lazy"
+      />
+    </div>
+    
+    <!-- Overlay con ícono de zoom -->
+    <div class="absolute inset-0 bg-[#0F4C75]/60 opacity-0 hover:opacity-100 focus:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+      <div class="bg-[#3282B8] rounded-full p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#BBE1FA]">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          <line x1="11" y1="8" x2="11" y2="14"></line>
+          <line x1="8" y1="11" x2="14" y2="11"></line>
+        </svg>
+      </div>
+    </div>
   </div>
   
-  <h3 class="text-xl font-bold mb-2 text-[#BBE1FA] text-center">{achievement.title}</h3>
-  <p class="text-[#BBE1FA]/80 mb-2 text-center">{achievement.issuer}</p>
-  <p class="text-[#3282B8] text-sm mb-4 text-center">{achievement.date}</p>
-  
-  <p class="text-[#BBE1FA]/80 text-center">{achievement.description}</p>
+  <div class="p-6 flex flex-col flex-grow">
+    <!-- Título con altura fija -->
+    <h3 class="text-xl font-bold mb-3 text-[#BBE1FA] min-h-[3.5rem] flex items-start">
+      {achievement.title}
+    </h3>
+    
+    <!-- Contenedor para emisor y fecha -->
+    <div class="flex justify-between items-center mb-4">
+      <p class="text-[#BBE1FA]/80">{achievement.issuer}</p>
+      <span class="bg-[#3282B8]/30 text-[#BBE1FA] text-xs px-2 py-1 rounded">{achievement.date}</span>
+    </div>
+    
+    <!-- Botón siempre al final -->
+    <div class="mt-auto pt-2">
+      <button class="text-[#3282B8] text-sm font-medium flex items-center hover:text-[#BBE1FA] transition-colors duration-300 w-full justify-center bg-[#1B262C]/40 py-2 px-3 rounded">
+        Ver certificado
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
 </article>
 

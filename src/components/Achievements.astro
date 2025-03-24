@@ -1,5 +1,6 @@
 ---
 import AchievementCard from './AchievementCard.astro';
+import CertificateModal from './CertificateModal.astro';
 import { getAchievements } from '../utils/dataUtils';
 
 const achievements = await getAchievements();
@@ -8,9 +9,6 @@ const achievements = await getAchievements();
 <section id="logros" class="section-padding bg-[#0F4C75]">
   <div class="container-custom">
     <h2 class="section-title text-center">Logros y Certificaciones</h2>
-    <p class="text-center text-[#BBE1FA]/80 max-w-3xl mx-auto mb-12">
-      Reconocimientos y certificaciones que he obtenido a lo largo de mi carrera profesional.
-    </p>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {achievements.map(achievement => (
@@ -18,5 +16,203 @@ const achievements = await getAchievements();
       ))}
     </div>
   </div>
+  
+  <!-- Modal para ver certificados en detalle -->
+  <CertificateModal />
 </section>
+
+<script>
+  // Inicializar el sistema de modales para los certificados
+  document.addEventListener('astro:page-load', () => {
+    const certificateCards = document.querySelectorAll('.certificate-card');
+    const modal = document.getElementById('certificate-modal');
+    const modalImage = document.getElementById('modal-certificate-image');
+    const modalTitle = document.getElementById('modal-certificate-title');
+    const modalIssuer = document.getElementById('desktop-certificate-issuer');
+    const mobileIssuer = document.getElementById('mobile-certificate-issuer');
+    const modalDate = document.getElementById('modal-certificate-date');
+    const mobileDate = document.getElementById('mobile-certificate-date');
+    const modalDescription = document.getElementById('modal-certificate-description');
+    const credentialLink = document.getElementById('credential-link');
+    const credentialUrl = document.getElementById('credential-url');
+    const closeModal = document.getElementById('close-modal');
+    const downloadBtn = document.getElementById('download-certificate');
+    const shareBtn = document.getElementById('share-certificate');
+    const zoomInBtn = document.getElementById('zoom-in');
+    const zoomOutBtn = document.getElementById('zoom-out');
+    const zoomResetBtn = document.getElementById('zoom-reset');
+    
+    let currentZoom = 1;
+    const zoomStep = 0.25;
+    const maxZoom = 3;
+    const minZoom = 0.5;
+    
+    // Función para abrir el modal con los detalles del certificado
+    function openCertificateModal(image, title, issuer, date, description, credential) {
+      if (modalImage) {
+        modalImage.setAttribute('src', image);
+        modalImage.setAttribute('alt', title);
+        // Resetear zoom
+        modalImage.style.transform = 'scale(1)';
+        currentZoom = 1;
+      }
+      
+      if (modalTitle) modalTitle.textContent = title;
+      if (modalIssuer) modalIssuer.textContent = issuer;
+      if (mobileIssuer) mobileIssuer.textContent = issuer;
+      if (modalDate) modalDate.textContent = date;
+      if (mobileDate) mobileDate.textContent = date;
+      if (modalDescription) modalDescription.textContent = description;
+      
+      // Configurar enlace de credencial
+      if (credentialLink && credentialUrl && credential) {
+        credentialLink.setAttribute('href', credential);
+        credentialUrl.textContent = credential;
+        credentialLink.classList.remove('hidden');
+      } else if (credentialLink) {
+        credentialLink.classList.add('hidden');
+      }
+      
+      // Configurar botón de descarga
+      if (downloadBtn) {
+        downloadBtn.setAttribute('href', image);
+        downloadBtn.setAttribute('download', `${title.replace(/\s+/g, '-').toLowerCase()}.jpg`);
+      }
+      
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+        
+        // Animación de entrada
+        setTimeout(() => {
+          const modalContent = document.querySelector('.modal-content');
+          if (modalContent) modalContent.classList.add('modal-active');
+        }, 10);
+      }
+    }
+    
+    // Cerrar el modal
+    function closeCertificateModal() {
+      const modalContent = document.querySelector('.modal-content');
+      if (modalContent) modalContent.classList.remove('modal-active');
+      
+      setTimeout(() => {
+        if (modal) {
+          modal.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        }
+      }, 300);
+    }
+    
+    // Funciones de zoom
+    function zoomIn() {
+      if (currentZoom < maxZoom) {
+        currentZoom += zoomStep;
+        if (modalImage) modalImage.style.transform = `scale(${currentZoom})`;
+      }
+    }
+    
+    function zoomOut() {
+      if (currentZoom > minZoom) {
+        currentZoom -= zoomStep;
+        if (modalImage) modalImage.style.transform = `scale(${currentZoom})`;
+      }
+    }
+    
+    function resetZoom() {
+      currentZoom = 1;
+      if (modalImage) modalImage.style.transform = 'scale(1)';
+    }
+    
+    // Compartir certificado
+    async function shareCertificate() {
+      if (!navigator.share) {
+        alert('La función de compartir no está disponible en este navegador.');
+        return;
+      }
+      
+      try {
+        await navigator.share({
+          title: modalTitle ? modalTitle.textContent : 'Certificado',
+          text: `Certificado de ${modalIssuer ? modalIssuer.textContent : ''}: ${modalTitle ? modalTitle.textContent : ''}`,
+          url: window.location.href,
+        });
+      } catch (error) {
+        console.error('Error al compartir:', error);
+      }
+    }
+    
+    // Asignar eventos a las tarjetas de certificados
+    certificateCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const image = card.getAttribute('data-image');
+        const title = card.getAttribute('data-title');
+        const issuer = card.getAttribute('data-issuer');
+        const date = card.getAttribute('data-date');
+        const description = card.getAttribute('data-description');
+        const credential = card.getAttribute('data-credential');
+        
+        openCertificateModal(image, title, issuer, date, description, credential);
+      });
+    });
+    
+    // Asignar eventos a los botones
+    if (closeModal) closeModal.addEventListener('click', closeCertificateModal);
+    if (zoomInBtn) zoomInBtn.addEventListener('click', zoomIn);
+    if (zoomOutBtn) zoomOutBtn.addEventListener('click', zoomOut);
+    if (zoomResetBtn) zoomResetBtn.addEventListener('click', resetZoom);
+    if (shareBtn) shareBtn.addEventListener('click', shareCertificate);
+    
+    // Cerrar modal al hacer clic fuera del contenido
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeCertificateModal();
+        }
+      });
+    }
+    
+    // Cerrar modal con la tecla ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+        closeCertificateModal();
+      }
+    });
+    
+    // Soporte para gestos táctiles (pinch zoom)
+    let initialDistance = 0;
+    
+    function getDistance(touches) {
+      return Math.hypot(
+        touches[0].clientX - touches[1].clientX,
+        touches[0].clientY - touches[1].clientY
+      );
+    }
+    
+    if (modalImage) {
+      modalImage.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          initialDistance = getDistance(e.touches);
+        }
+      }, { passive: false });
+      
+      modalImage.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          const currentDistance = getDistance(e.touches);
+          const scale = currentDistance / initialDistance;
+          
+          if (scale > 1.1) {
+            zoomIn();
+            initialDistance = currentDistance;
+          } else if (scale < 0.9) {
+            zoomOut();
+            initialDistance = currentDistance;
+          }
+        }
+      }, { passive: false });
+    }
+  });
+</script>
 

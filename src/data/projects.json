@@ -14,7 +14,7 @@
     "description": "Conexion local entre dos maquinas distintas para el modo multijugador, reconocimiento de teclas, y animaciones.",
     "image": "/totito.png?height=338&width=600",
     "technologies": ["Ensamblador", "VirtualBox"],
-    "demoUrl": "https://www.youtube.com/watch?v=aHiSvfKpPlI",
+    "demoUrl": "",
     "repoUrl": "https://github.com/ejemplo/repo"
   },
   {

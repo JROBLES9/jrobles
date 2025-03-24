@@ -5,5 +5,6 @@ export interface Achievement {
   date: string
   description: string
   image: string
+  credential?: string // URL opcional para verificar la credencial
 }
 
